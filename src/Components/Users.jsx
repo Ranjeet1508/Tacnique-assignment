@@ -78,8 +78,8 @@ const Users = () => {
         axios
             .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
             .then(() => {
-                fetchUsers(currentPage, usersPerPage); // Refresh users after deletion
-            })
+                setUsers(users.filter((user) => user.id !== id));
+              })
             .catch(() => {
                 setError("Failed to delete user");
             });
